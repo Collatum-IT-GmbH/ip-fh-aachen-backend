@@ -1,0 +1,18 @@
+version: '2.2'
+services:
+  ip-mongodb:
+    image: mongo:5.0.8
+    container_name: 'ip-mongodb'
+    networks:
+      - ip-fh-aachen
+    environment:
+      - MONGO_INITDB_DATABASE=ip-fh-aachen
+      - MONGO_INITDB_ROOT_USERNAME=mongo-admin
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+    volumes:
+      - ./mongodb/mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+networks:
+  ip-fh-aachen:
+    driver: bridge
