@@ -1,37 +1,56 @@
 package com.collatum.ipfhaachen.persistence.entities;
 
 import com.collatum.ipfhaachen.dto.AddressDto;
+import com.collatum.ipfhaachen.dto.PersonDto;
 import org.bson.types.ObjectId;
 
-public class Person {
+public class PersonEntity {
+
+    //attributes
     private ObjectId id;
     private String dateOfBirth;
     private String familyName;
     private String givenName;
+    private String email;
     private AddressDto address;
 
-    public Person() {
+    //constructors
+    public PersonEntity() {
         this.id = null;
         this.dateOfBirth = null;
         this.familyName = null;
         this.givenName = null;
+        this.email = null;
         this.address = new AddressDto();
     }
 
-    public Person(
+    public PersonEntity(
             ObjectId _id,
             String _dateOfBirth,
             String _familyName,
             String _givenName,
+            String _email,
             AddressDto _address
     ) {
         this.id = _id;
         this.dateOfBirth = _dateOfBirth;
         this.familyName = _familyName;
         this.givenName = _givenName;
+        this.email = _email;
         this.address = _address;
     }
 
+    public PersonEntity(
+            PersonDto personDto
+    ) {
+        this.dateOfBirth = personDto.getDateOfBirth();
+        this.familyName = personDto.getFamilyName();
+        this.givenName = personDto.getGivenName();;
+        this.email = personDto.getEmail();
+        this.address = personDto.getAddress();
+    }
+
+    //setter
 
     public void setId(ObjectId id) {
         this.id = id;
@@ -54,6 +73,7 @@ public class Person {
     }
 
 
+    //getter
     public ObjectId getId() {
         return id;
     }
