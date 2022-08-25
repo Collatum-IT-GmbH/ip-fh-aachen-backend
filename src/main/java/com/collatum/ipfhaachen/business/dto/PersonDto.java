@@ -1,6 +1,7 @@
 package com.collatum.ipfhaachen.business.dto;
 
 import com.collatum.ipfhaachen.persistence.entities.PersonEntity;
+import com.collatum.ipfhaachen.utils.models.Address;
 import lombok.*;
 
 @ToString
@@ -13,7 +14,7 @@ public class PersonDto {
     private final @NonNull String familyName;
     private final @NonNull String givenName;
     private final @NonNull String email;
-    private final @NonNull AddressDto address;
+    private final @NonNull Address address;
 
     //constructors
 
