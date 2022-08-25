@@ -1,4 +1,4 @@
-package com.collatum.ipfhaachen.dto;
+package com.collatum.ipfhaachen.business.dto;
 
 public class AddressDto {
     private String zip;

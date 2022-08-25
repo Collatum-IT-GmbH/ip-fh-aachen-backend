@@ -1,42 +1,33 @@
 package com.collatum.ipfhaachen.persistence.entities;
 
-import com.collatum.ipfhaachen.dto.AddressDto;
-import com.collatum.ipfhaachen.dto.PersonDto;
+import com.collatum.ipfhaachen.business.dto.AddressDto;
+import com.collatum.ipfhaachen.business.dto.PersonDto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalTime;
 
+@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public class PersonEntity {
 
     //attributes
+    private @Id ObjectId id;
     private LocalTime createdAt;
-    private ObjectId id;
     private String dateOfBirth;
     private String familyName;
     private String givenName;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     private String email;
     private AddressDto address;
 
     //constructors
-    public PersonEntity() {
-        this.id = null;
-        this.dateOfBirth = null;
-        this.familyName = null;
-        this.givenName = null;
-        this.email = null;
-        this.address = new AddressDto();
-    }
-
     public PersonEntity(
             ObjectId _id,
             String _dateOfBirth,
@@ -57,57 +48,10 @@ public class PersonEntity {
     public PersonEntity(
             PersonDto personDto
     ) {
-        this.createdAt = LocalTime.now();
         this.dateOfBirth = personDto.getDateOfBirth();
         this.familyName = personDto.getFamilyName();
         this.givenName = personDto.getGivenName();;
         this.email = personDto.getEmail();
         this.address = personDto.getAddress();
     }
-
-    //setter
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    public void setDateOfBirth(String _dateOfBirth) {
-        this.dateOfBirth = _dateOfBirth;
-    }
-
-    public void setFamilyName(String _familyName) {
-        this.familyName = _familyName;
-    }
-
-    public void setGivenName(String _givenName) {
-        this.givenName = _givenName;
-    }
-
-    public void setAddress(AddressDto _address) {
-        this.address = _address;
-    }
-
-
-    //getter
-    public ObjectId getId() {
-        return id;
-    }
-
-    public String getDateOfBirth() {
-        return this.dateOfBirth;
-    }
-
-    public String getFamilyName() {
-        return this.familyName;
-    }
-
-    public String getGivenName() {
-        return this.givenName;
-    }
-
-    public AddressDto getAddress() {
-        return this.address;
-    }
-
-    public LocalTime getCreatedAt() { return this.createdAt; }
 }
