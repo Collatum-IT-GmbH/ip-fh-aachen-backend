@@ -2,11 +2,15 @@ package com.collatum.ipfhaachen.persistence.entities;
 
 import com.collatum.ipfhaachen.dto.AddressDto;
 import com.collatum.ipfhaachen.dto.PersonDto;
+
 import org.bson.types.ObjectId;
+
+import java.time.LocalTime;
 
 public class PersonEntity {
 
     //attributes
+    private LocalTime createdAt;
     private ObjectId id;
     private String dateOfBirth;
     private String familyName;
@@ -32,6 +36,7 @@ public class PersonEntity {
             String _email,
             AddressDto _address
     ) {
+        this.createdAt = LocalTime.now();
         this.id = _id;
         this.dateOfBirth = _dateOfBirth;
         this.familyName = _familyName;
@@ -43,6 +48,7 @@ public class PersonEntity {
     public PersonEntity(
             PersonDto personDto
     ) {
+        this.createdAt = LocalTime.now();
         this.dateOfBirth = personDto.getDateOfBirth();
         this.familyName = personDto.getFamilyName();
         this.givenName = personDto.getGivenName();;
@@ -93,4 +99,6 @@ public class PersonEntity {
     public AddressDto getAddress() {
         return this.address;
     }
+
+    public LocalTime getCreatedAt() { return this.createdAt; }
 }
