@@ -1,6 +1,6 @@
 package com.collatum.ipfhaachen.persistence.entities;
 
-import com.collatum.ipfhaachen.business.dto.AddressDto;
+import com.collatum.ipfhaachen.utils.models.Address;
 import com.collatum.ipfhaachen.business.dto.PersonDto;
 
 import lombok.Getter;
@@ -25,7 +25,7 @@ public class PersonEntity {
     private String familyName;
     private String givenName;
     private String email;
-    private AddressDto address;
+    private Address address;
 
     //constructors
     public PersonEntity(
@@ -34,7 +34,7 @@ public class PersonEntity {
             String _familyName,
             String _givenName,
             String _email,
-            AddressDto _address
+            Address _address
     ) {
         this.createdAt = LocalTime.now();
         this.id = _id;
