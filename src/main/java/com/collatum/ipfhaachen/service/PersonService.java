@@ -17,10 +17,12 @@ public class PersonService {
     public PersonService(PersonRepository _personRepository) {
         this.personRepository = _personRepository;
     }
-    public PersonEntity createPerson(PersonDto personDto) {
+    public PersonDto createPerson(PersonDto personDto) {
         logger.debug("Storing new Person entry in Database");
 
-        PersonEntity entry = personRepository.insert(new PersonEntity(personDto));   //redundant, for semantic purposes only
-        return entry;
+        PersonEntity insertedPersonEntity = personRepository.insert(new PersonEntity(personDto));
+
+
+        return PersonDto.fromEntity(insertedPersonEntity);
     }
 }
