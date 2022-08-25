@@ -12,7 +12,20 @@ public class AddressDto {
         this.street = null;
         this.houseNumber = null;
     }
-
+    /*
+    {
+      "dateOfBirth": "20.01.2000",
+      "familyName": "Bohrer",
+      "givenName": "Yannick",
+      "email": "bohreryannick@gmail.com",
+      "address": {
+          "zip": "52080",
+          "city": "Aachen",
+          "street": "Cockerillpark",
+          "houseNumber": "40"
+      }
+    }
+    */
     public String getZip() {
         return zip;
     }
