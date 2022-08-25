@@ -15,6 +15,15 @@ public class PersonEntity {
     private String dateOfBirth;
     private String familyName;
     private String givenName;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     private String email;
     private AddressDto address;
 

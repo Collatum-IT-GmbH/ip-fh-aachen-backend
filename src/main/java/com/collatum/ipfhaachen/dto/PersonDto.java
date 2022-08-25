@@ -1,5 +1,7 @@
 package com.collatum.ipfhaachen.dto;
 
+import com.collatum.ipfhaachen.persistence.entities.PersonEntity;
+
 public class PersonDto {
 
     //attributes
@@ -30,6 +32,22 @@ public class PersonDto {
         this.givenName = _givenName;
         this.email = _email;
         this.address = _address;
+    }
+
+    public PersonDto(
+            PersonEntity personEntity
+    ) {
+        this.dateOfBirth = personEntity.getDateOfBirth();
+        this.familyName = personEntity.getFamilyName();
+        this.givenName = personEntity.getGivenName();
+        this.email = personEntity.getEmail();
+        this.address = personEntity.getAddress();
+    }
+
+    public static PersonDto fromEntity(PersonEntity personEntity) {
+        return new PersonDto(
+                personEntity
+        );
     }
 
     //setter
