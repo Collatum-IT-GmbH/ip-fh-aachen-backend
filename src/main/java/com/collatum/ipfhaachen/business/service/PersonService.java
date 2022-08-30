@@ -39,12 +39,25 @@ public class PersonService {
     }
 
     public Boolean deletePerson(PersonDto personDto) throws UserNotFoundException {
-        PersonEntity requestedPerson = this.personRepository.findByEmail(personDto.getEmail());
+        PersonEntity requestedPerson = this.personRepository.findById(personDto.getId());
 
         if (requestedPerson == null)
             throw new UserNotFoundException("The Requested User could not be found in the database");
 
         this.personRepository.delete(requestedPerson);
         return true;
+    }
+
+    public PersonDto updatePerson(PersonDto personDto) throws UserNotFoundException {
+        PersonEntity requestedPerson = this.personRepository.findById(personDto.getId());
+
+        if (requestedPerson == null)
+            throw new UserNotFoundException("The Requested User could not be found in the database");
+
+        return new PersonDto(
+                this.personRepository.save(
+                        new PersonEntity(personDto)
+                )
+        );
     }
 }
