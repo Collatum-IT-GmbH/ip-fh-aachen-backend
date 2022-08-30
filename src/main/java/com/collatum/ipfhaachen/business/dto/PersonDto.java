@@ -3,17 +3,16 @@ package com.collatum.ipfhaachen.business.dto;
 import com.collatum.ipfhaachen.persistence.entities.PersonEntity;
 import com.collatum.ipfhaachen.utils.models.Address;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import lombok.NonNull;
 import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
 
 @ToString
 @Getter
 @RequiredArgsConstructor
 public class PersonDto {
-    private @Id ObjectId id;
+    private String id;
     private final @NonNull String dateOfBirth;
     private final @NonNull String familyName;
     private final @NonNull String givenName;
@@ -23,7 +22,7 @@ public class PersonDto {
     public PersonDto(
             PersonEntity personEntity
     ) {
-        this.id = personEntity.getId();
+        this.id = personEntity.getId().toString();
         this.dateOfBirth = personEntity.getDateOfBirth();
         this.familyName = personEntity.getFamilyName();
         this.givenName = personEntity.getGivenName();
