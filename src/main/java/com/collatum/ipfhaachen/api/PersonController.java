@@ -16,7 +16,7 @@ public class PersonController {
 
     private final @NonNull PersonService personService;
 
-    @PostMapping("/person/create")
+    @PostMapping("/person/createPerson")
     public ResponseEntity<PersonDto> createPerson(
             @RequestBody PersonDto personDto
     ) throws UserAlreadyExistsException {
@@ -30,5 +30,15 @@ public class PersonController {
     ) throws UserNotFoundException {
         PersonDto requestedPerson = this.personService.getPerson(new ObjectId(id));
         return ResponseEntity.status(HttpStatus.OK).body(requestedPerson);
+    }
+
+    @DeleteMapping("/person/deletePerson")
+    public ResponseEntity<Boolean> deletePerson(
+            @RequestBody PersonDto personDto
+    ) throws UserNotFoundException {
+        if (this.personService.deletePerson(personDto))
+            return ResponseEntity.status(HttpStatus.OK).body(true);
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
     }
 }

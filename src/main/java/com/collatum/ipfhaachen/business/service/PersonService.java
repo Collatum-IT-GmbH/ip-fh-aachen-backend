@@ -37,4 +37,14 @@ public class PersonService {
 
         return new PersonDto(requestedPerson);
     }
+
+    public Boolean deletePerson(PersonDto personDto) throws UserNotFoundException {
+        PersonEntity requestedPerson = this.personRepository.findByEmail(personDto.getEmail());
+
+        if (requestedPerson == null)
+            throw new UserNotFoundException("The Requested User could not be found in the database");
+
+        this.personRepository.delete(requestedPerson);
+        return true;
+    }
 }
