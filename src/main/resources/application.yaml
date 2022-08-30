@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       database: ip-fh-aachen
-      uri: mongodb://mongo-admin:mongo@localhost:27017
+      uri: mongodb://localhost:27017
       auto-index-creation: true
 
 springdoc:
