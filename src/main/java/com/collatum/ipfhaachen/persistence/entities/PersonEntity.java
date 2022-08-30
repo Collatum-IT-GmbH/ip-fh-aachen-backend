@@ -48,6 +48,7 @@ public class PersonEntity {
     public PersonEntity(
             PersonDto personDto
     ) {
+        this.createdAt = LocalTime.now();
         this.dateOfBirth = personDto.getDateOfBirth();
         this.familyName = personDto.getFamilyName();
         this.givenName = personDto.getGivenName();;
