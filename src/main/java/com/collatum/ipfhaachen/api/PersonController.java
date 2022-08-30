@@ -34,12 +34,10 @@ public class PersonController {
 
     @DeleteMapping("/person/deletePerson")
     public ResponseEntity<Boolean> deletePerson(
-            @RequestBody PersonDto personDto
+            @RequestParam(name = "id") String id
     ) throws UserNotFoundException {
-        if (this.personService.deletePerson(personDto))
-            return ResponseEntity.status(HttpStatus.OK).body(true);
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+        this.personService.deletePerson(new ObjectId(id));
+        return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PutMapping("/person/updatePerson")

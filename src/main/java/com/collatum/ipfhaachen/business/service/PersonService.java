@@ -33,26 +33,25 @@ public class PersonService {
         PersonEntity requestedPerson = this.personRepository.findById(id);
 
         if (requestedPerson == null)
-            throw new UserNotFoundException("The Requested User could not be found in the database");
+            throw new UserNotFoundException("The requested User could not be found in the database");
 
         return new PersonDto(requestedPerson);
     }
 
-    public Boolean deletePerson(PersonDto personDto) throws UserNotFoundException {
-        PersonEntity requestedPerson = this.personRepository.findById(personDto.getId());
+    public void deletePerson(ObjectId id) throws UserNotFoundException {
+        PersonEntity requestedPerson = this.personRepository.findById(id);
 
         if (requestedPerson == null)
-            throw new UserNotFoundException("The Requested User could not be found in the database");
+            throw new UserNotFoundException("The requested User could not be found in the database");
 
         this.personRepository.delete(requestedPerson);
-        return true;
     }
 
     public PersonDto updatePerson(PersonDto personDto) throws UserNotFoundException {
-        PersonEntity requestedPerson = this.personRepository.findById(personDto.getId());
+        PersonEntity requestedPerson = this.personRepository.findById(new ObjectId(personDto.getId()));
 
         if (requestedPerson == null)
-            throw new UserNotFoundException("The Requested User could not be found in the database");
+            throw new UserNotFoundException("The requested User could not be found in the database");
 
         return new PersonDto(
                 this.personRepository.save(
