@@ -41,4 +41,12 @@ public class PersonController {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
     }
+
+    @PutMapping("/person/updatePerson")
+    public ResponseEntity<PersonDto> updatePerson(
+            @RequestBody PersonDto personDto
+    ) throws UserNotFoundException {
+        PersonDto updatedPerson = this.personService.updatePerson(personDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedPerson);
+    }
 }
