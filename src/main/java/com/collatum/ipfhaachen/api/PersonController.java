@@ -19,7 +19,7 @@ public class PersonController {
 
     private final @NonNull PersonService personService;
 
-    @PostMapping("/person/create")
+    @PostMapping("/person/createPerson")
     public ResponseEntity<PersonDto> createPerson(
             @RequestBody PersonDto personDto
     ) throws UserAlreadyExistsException {
