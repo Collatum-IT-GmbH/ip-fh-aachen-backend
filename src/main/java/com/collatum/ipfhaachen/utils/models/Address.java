@@ -6,11 +6,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 @Getter
-@Accessors(fluent = true)
 @RequiredArgsConstructor
-public record Address(
-        @NonNull String zip,
-        @NonNull String city,
-        @NonNull String street,
-        @NonNull String houseNumber
+public class Address(
+        private final @NonNull String zip,
+        private final @NonNull String city,
+        private final @NonNull String street,
+        private final @NonNull String houseNumber
 ) { }
