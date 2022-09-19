@@ -14,7 +14,7 @@ import com.collatum.ipfhaachen.business.service.PersonService;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins="localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 public class PersonController {
 
     private final @NonNull PersonService personService;
