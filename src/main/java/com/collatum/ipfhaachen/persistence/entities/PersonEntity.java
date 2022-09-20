@@ -20,7 +20,7 @@ public class PersonEntity {
 
     //attributes
     private @Id ObjectId id;
-    private LocalTime createdAt;
+    private LocalTime updatedAt;
     private String dateOfBirth;
     private String familyName;
     private String givenName;
@@ -36,7 +36,7 @@ public class PersonEntity {
             String _email,
             Address _address
     ) {
-        this.createdAt = LocalTime.now();
+        this.updatedAt = LocalTime.now();
         this.id = _id;
         this.dateOfBirth = _dateOfBirth;
         this.familyName = _familyName;
@@ -48,6 +48,7 @@ public class PersonEntity {
     public PersonEntity(
             PersonDto personDto
     ) {
+        this.updatedAt = LocalTime.now();
         this.dateOfBirth = personDto.getDateOfBirth();
         this.familyName = personDto.getFamilyName();
         this.givenName = personDto.getGivenName();;
