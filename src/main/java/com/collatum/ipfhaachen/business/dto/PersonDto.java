@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import org.bson.types.ObjectId;
 
 @ToString
 @Getter
@@ -14,8 +13,8 @@ import org.bson.types.ObjectId;
 public class PersonDto {
     private String id;
     private final @NonNull String dateOfBirth;
-    private final @NonNull String familyName;
-    private final @NonNull String givenName;
+    private final @NonNull String firstName;
+    private final @NonNull String lastName;
     private final @NonNull String email;
     private final @NonNull Address address;
 
@@ -24,8 +23,8 @@ public class PersonDto {
     ) {
         this.id = personEntity.getId().toString();
         this.dateOfBirth = personEntity.getDateOfBirth();
-        this.familyName = personEntity.getFamilyName();
-        this.givenName = personEntity.getGivenName();
+        this.firstName = personEntity.getFirstName();
+        this.lastName = personEntity.getLastName();
         this.email = personEntity.getEmail();
         this.address = personEntity.getAddress();
     }

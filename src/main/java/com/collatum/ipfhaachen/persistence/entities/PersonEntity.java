@@ -9,6 +9,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 
 import java.time.LocalTime;
 
@@ -16,33 +18,34 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Document(collection = "persons")
 public class PersonEntity {
 
     //attributes
     private @Id ObjectId id;
     private LocalTime updatedAt;
     private String dateOfBirth;
-    private String familyName;
-    private String givenName;
+    private String firstName;
+    private String lastName;
     private String email;
     private Address address;
 
     //constructors
     public PersonEntity(
-            ObjectId _id,
-            String _dateOfBirth,
-            String _familyName,
-            String _givenName,
-            String _email,
-            Address _address
+            ObjectId id,
+            String dateOfBirth,
+            String firstName,
+            String lastName,
+            String email,
+            Address address
     ) {
         this.updatedAt = LocalTime.now();
-        this.id = _id;
-        this.dateOfBirth = _dateOfBirth;
-        this.familyName = _familyName;
-        this.givenName = _givenName;
-        this.email = _email;
-        this.address = _address;
+        this.id = id;
+        this.dateOfBirth = dateOfBirth;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
     }
 
     public PersonEntity(
@@ -53,8 +56,8 @@ public class PersonEntity {
         }
         this.updatedAt = LocalTime.now();
         this.dateOfBirth = personDto.getDateOfBirth();
-        this.familyName = personDto.getFamilyName();
-        this.givenName = personDto.getGivenName();;
+        this.firstName = personDto.getFirstName();
+        this.lastName = personDto.getLastName();;
         this.email = personDto.getEmail();
         this.address = personDto.getAddress();
     }

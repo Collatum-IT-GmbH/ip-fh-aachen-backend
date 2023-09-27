@@ -13,11 +13,12 @@ import com.collatum.ipfhaachen.business.service.PersonService;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins="http://localhost:4200")
+@RequestMapping("/person")
 public class PersonController {
 
     private final @NonNull PersonService personService;
 
-    @PostMapping("/person/createPerson")
+    @PostMapping
     public ResponseEntity<PersonDto> createPerson(
             @RequestBody PersonDto personDto
     ) throws UserAlreadyExistsException {
@@ -25,7 +26,7 @@ public class PersonController {
         return ResponseEntity.status(HttpStatus.CREATED).body(insertedPerson);
     }
 
-    @GetMapping("/person/getPersonById")
+    @GetMapping
     public ResponseEntity<PersonDto> getPersonById(
             @RequestParam(name = "id") String id
     ) throws UserNotFoundException {
@@ -33,7 +34,7 @@ public class PersonController {
         return ResponseEntity.status(HttpStatus.OK).body(requestedPerson);
     }
 
-    @DeleteMapping("/person/deletePerson")
+    @DeleteMapping
     public ResponseEntity<Boolean> deletePerson(
             @RequestParam(name = "id") String id
     ) throws UserNotFoundException {
@@ -41,7 +42,7 @@ public class PersonController {
         return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PutMapping("/person/updatePerson")
+    @PutMapping
     public ResponseEntity<PersonDto> updatePerson(
             @RequestBody PersonDto personDto
     ) throws UserNotFoundException {
